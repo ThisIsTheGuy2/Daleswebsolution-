@@ -20,6 +20,56 @@
         details > summary::-webkit-details-marker {
             display: none;
         }
+
+        /* WhatsApp floating button styles (mobile only) */
+        .whatsapp-float {
+          position: fixed;
+          /* place slightly below vertical center on the right */
+          top: 55%;
+          transform: translateY(-50%);
+          right: calc(16px + env(safe-area-inset-right));
+          z-index: 9999;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 56px;
+          height: 56px;
+          background: #25D366; /* WhatsApp green */
+          color: #fff;
+          border-radius: 50%;
+          box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+          text-decoration: none;
+          transition: transform .15s ease, box-shadow .15s ease;
+          -webkit-tap-highlight-color: transparent;
+          border: none;
+        }
+
+        .whatsapp-float svg {
+          width: 60%;
+          height: 60%;
+          display: block;
+        }
+
+        .whatsapp-float:hover,
+        .whatsapp-float:focus {
+          transform: translateY(-50%) scale(1.06);
+          box-shadow: 0 10px 22px rgba(0,0,0,0.22);
+          outline: none;
+        }
+
+        .whatsapp-float:active {
+          transform: translateY(-50%) scale(0.98);
+        }
+
+        /* Hide on desktop */
+        @media (min-width: 769px) {
+          .whatsapp-float { display: none !important; }
+        }
+
+        /* Slight size tweak for very narrow screens */
+        @media (max-width: 420px) {
+          .whatsapp-float { width: 50px; height: 50px; }
+        }
     </style>
 </head>
 <body class="font-sans text-slate-800 bg-slate-50 selection:bg-teal-500 selection:text-white">
@@ -43,7 +93,7 @@
                     <a href="#pricing" class="text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">Pricing</a>
                     <a href="#portfolio" class="text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">Work</a>
                     <a href="#faq" class="text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">FAQ</a>
-                    <a href="#contact" class="bg-slate-900 text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-slate-800 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                    <a href="#contact" class="bg-slate-900 text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-slate-800 transition-all shadow-md hover:shadow-lg transform hover:-tran[...]
                         Let's Chat
                     </a>
                 </div>
@@ -61,9 +111,9 @@
         <!-- Mobile Menu Panel -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full shadow-lg">
             <div class="px-4 pt-2 pb-6 space-y-1">
-                <a href="#services" class="mobile-link block w-full text-left px-3 py-4 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-teal-600 border-b border-slate-50">Services</a>
-                <a href="#pricing" class="mobile-link block w-full text-left px-3 py-4 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-teal-600 border-b border-slate-50">Pricing</a>
-                <a href="#portfolio" class="mobile-link block w-full text-left px-3 py-4 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-teal-600 border-b border-slate-50">Work</a>
+                <a href="#services" class="mobile-link block w-full text-left px-3 py-4 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-teal-600 border-b border-slate-50">Service[...]
+                <a href="#pricing" class="mobile-link block w-full text-left px-3 py-4 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-teal-600 border-b border-slate-50">Pricing<[...]
+                <a href="#portfolio" class="mobile-link block w-full text-left px-3 py-4 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-teal-600 border-b border-slate-50">Work</[...]
                 <a href="#faq" class="mobile-link block w-full text-left px-3 py-4 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-teal-600 border-b border-slate-50">FAQ</a>
                 <a href="#contact" class="mobile-link block w-full text-center mt-4 bg-teal-500 text-white px-3 py-3 rounded-lg text-base font-medium hover:bg-teal-600 transition-colors">
                     Let's Chat
@@ -94,10 +144,10 @@
                     Fast-loading, mobile-friendly sites built for local South African businesses. No monthly bloat, no complicated templates—just honest, reliable web development.
                 </p>
                 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="#pricing" class="flex items-center justify-center bg-teal-500 hover:bg-teal-400 text-slate-900 font-bold px-8 py-4 rounded-xl transition-all shadow-lg shadow-teal-500/30 transform hover:-translate-y-0.5">
+                    <a href="#pricing" class="flex items-center justify-center bg-teal-500 hover:bg-teal-400 text-slate-900 font-bold px-8 py-4 rounded-xl transition-all shadow-lg shadow-teal-500/[...]">
                         See My Packages
                     </a>
-                    <a href="#portfolio" class="flex items-center justify-center bg-transparent border-2 border-slate-600 hover:border-slate-400 text-white font-semibold px-8 py-4 rounded-xl transition-all transform hover:-translate-y-0.5">
+                    <a href="#portfolio" class="flex items-center justify-center bg-transparent border-2 border-slate-600 hover:border-slate-400 text-white font-semibold px-8 py-4 rounded-xl tran[...]
                         View Live Examples
                     </a>
                 </div>
@@ -159,7 +209,7 @@
                     <div class="p-10 md:p-16 flex flex-col justify-center">
                         <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Why work with a local developer?</h2>
                         <p class="text-slate-300 text-lg mb-8 leading-relaxed">
-                            Agencies often charge a fortune and treat you like a number. Do-it-yourself builders take up your valuable time and often look unprofessional. I offer the sweet spot: high-quality work at a fair price, with personal support you can actually rely on.
+                            Agencies often charge a fortune and treat you like a number. Do-it-yourself builders take up your valuable time and often look unprofessional. I offer the sweet spot: [...]
                         </p>
                         <ul class="space-y-4">
                             <li class="flex items-start">
@@ -240,7 +290,7 @@
                         <span class="text-4xl font-extrabold text-slate-900">R1,200</span>
                         <span class="text-slate-500"> / once-off</span>
                     </div>
-                    <a href="#contact" class="block text-center w-full py-3 px-6 rounded-xl border-2 border-slate-900 text-slate-900 font-bold hover:bg-slate-900 hover:text-white transition-colors mb-8">
+                    <a href="#contact" class="block text-center w-full py-3 px-6 rounded-xl border-2 border-slate-900 text-slate-900 font-bold hover:bg-slate-900 hover:text-white transition-color[...]">
                         Get Started
                     </a>
                     <ul class="space-y-4">
@@ -277,7 +327,7 @@
                            </span>
                         <span class="text-slate-400"> / contact for a quote</span>
                     </div>
-                    <a href="#contact" class="block text-center w-full py-3 px-6 rounded-xl bg-teal-500 text-slate-900 font-bold hover:bg-teal-400 transition-colors mb-8 shadow-lg shadow-teal-500/20">
+                    <a href="#contact" class="block text-center w-full py-3 px-6 rounded-xl bg-teal-500 text-slate-900 font-bold hover:bg-teal-400 transition-colors mb-8 shadow-lg shadow-teal-500[...]">
                         Get Started
                     </a>
                     <ul class="space-y-4">
@@ -308,8 +358,8 @@ Your satisfaction is our priority. We don't just build websites, we build soluti
                             <div class="text-3xl font-extrabold text-slate-900 mb-6">FREE <span class="text-base font-normal text-slate-500">/ month</span></div>
                             <ul class="space-y-2 mb-6 md:mb-0">
                                 <li class="flex items-center text-sm text-slate-700"><i data-lucide="check" class="w-4 h-4 text-teal-500 mr-2"></i> Life time hosting at no cost</li>
-                                <li class="flex items-center text-sm text-slate-700"><i data-lucide="check" class="w-4 h-4 text-teal-500 mr-2"></i> Maintenance or revits at low cost with quality results</li>
-                                <li class="flex items-center text-sm text-slate-700"><i data-lucide="check" class="w-4 h-4 text-teal-500 mr-2"></i> Backups, security checks & priority support</li>
+                                <li class="flex items-center text-sm text-slate-700"><i data-lucide="check" class="w-4 h-4 text-teal-500 mr-2"></i> Maintenance or revits at low cost with quality [...]
+                                <li class="flex items-center text-sm text-slate-700"><i data-lucide="check" class="w-4 h-4 text-teal-500 mr-2"></i> Backups, security checks & priority support</li[...]
                             </ul>
                         </div>
                         
@@ -321,7 +371,7 @@ Your satisfaction is our priority. We don't just build websites, we build soluti
                                 <div>
                                     <h4 class="text-sm font-bold text-slate-900 mb-1">An honest note about contact forms:</h4>
                                     <p class="text-sm text-slate-600 leading-relaxed">
-                                        Important: The quote form uses a reliable third-party service to work. It functions well on the free/low-cost tier for most small businesses, but for it to stay reliable long-term, the maintenance plan is recommended.
+                                        Important: The quote form uses a reliable third-party service to work. It functions well on the free/low-cost tier for most small businesses, but for it to[...]
                                     </p>
                                 </div>
                             </div>
@@ -349,7 +399,7 @@ Your satisfaction is our priority. We don't just build websites, we build soluti
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project 1 -->
                 <div class="group cursor-pointer">
-                    <div class="w-full aspect-[4/3] rounded-2xl bg-blue-100 mb-4 relative overflow-hidden flex items-center justify-center border border-slate-200 group-hover:shadow-md transition-all">
+                    <div class="w-full aspect-[4/3] rounded-2xl bg-blue-100 mb-4 relative overflow-hidden flex items-center justify-center border border-slate-200 group-hover:shadow-md transition[...]
                         <div class="text-slate-500 font-medium opacity-50 flex flex-col items-center">
                             <i data-lucide="code" class="w-10 h-10 mb-2"></i>
                             <span>Project Image Placeholder</span>
@@ -362,7 +412,7 @@ Your satisfaction is our priority. We don't just build websites, we build soluti
                 
                 <!-- Project 2 -->
                 <div class="group cursor-pointer">
-                    <div class="w-full aspect-[4/3] rounded-2xl bg-emerald-100 mb-4 relative overflow-hidden flex items-center justify-center border border-slate-200 group-hover:shadow-md transition-all">
+                    <div class="w-full aspect-[4/3] rounded-2xl bg-emerald-100 mb-4 relative overflow-hidden flex items-center justify-center border border-slate-200 group-hover:shadow-md transit[...]
                         <div class="text-slate-500 font-medium opacity-50 flex flex-col items-center">
                             <i data-lucide="code" class="w-10 h-10 mb-2"></i>
                             <span>Project Image Placeholder</span>
@@ -375,7 +425,7 @@ Your satisfaction is our priority. We don't just build websites, we build soluti
 
                 <!-- Project 3 -->
                 <div class="group cursor-pointer">
-                    <div class="w-full aspect-[4/3] rounded-2xl bg-slate-200 mb-4 relative overflow-hidden flex items-center justify-center border border-slate-200 group-hover:shadow-md transition-all">
+                    <div class="w-full aspect-[4/3] rounded-2xl bg-slate-200 mb-4 relative overflow-hidden flex items-center justify-center border border-slate-200 group-hover:shadow-md transitio[...]
                         <div class="text-slate-500 font-medium opacity-50 flex flex-col items-center">
                             <i data-lucide="code" class="w-10 h-10 mb-2"></i>
                             <span>Project Image Placeholder</span>
@@ -407,7 +457,7 @@ Your satisfaction is our priority. We don't just build websites, we build soluti
                         <i data-lucide="star" class="w-5 h-5 text-amber-400 fill-amber-400"></i>
                         <i data-lucide="star" class="w-5 h-5 text-amber-400 fill-amber-400"></i>
                     </div>
-                    <p class="text-slate-700 italic mb-6 leading-relaxed">"I messaged Dale on WhatsApp on a Monday and my site was live by Friday. For R1200 I couldn't believe how professional it looked."</p>
+                    <p class="text-slate-700 italic mb-6 leading-relaxed">"I messaged Dale on WhatsApp on a Monday and my site was live by Friday. For R1200 I couldn't believe how professional it[...]
                     <div>
                         <h4 class="font-bold text-slate-900">Thabo M.</h4>
                         <p class="text-sm text-slate-500">Cape Town</p>
@@ -439,7 +489,7 @@ Your satisfaction is our priority. We don't just build websites, we build soluti
                         <i data-lucide="star" class="w-5 h-5 text-amber-400 fill-amber-400"></i>
                         <i data-lucide="star" class="w-5 h-5 text-amber-400 fill-amber-400"></i>
                     </div>
-                    <p class="text-slate-700 italic mb-6 leading-relaxed">"Straightforward, no jargon, and no surprise costs. Dale explained everything in plain terms and delivered exactly on time."</p>
+                    <p class="text-slate-700 italic mb-6 leading-relaxed">"Straightforward, no jargon, and no surprise costs. Dale explained everything in plain terms and delivered exactly on tim[...]
                     <div>
                         <h4 class="font-bold text-slate-900">Pieter v.d. Merwe</h4>
                         <p class="text-sm text-slate-500">Stellenbosch</p>
@@ -455,7 +505,7 @@ Your satisfaction is our priority. We don't just build websites, we build soluti
                         <i data-lucide="star" class="w-5 h-5 text-amber-400 fill-amber-400"></i>
                         <i data-lucide="star" class="w-5 h-5 text-amber-400 fill-amber-400"></i>
                     </div>
-                    <p class="text-slate-700 italic mb-6 leading-relaxed">"As a one-person business I needed something affordable and fast. This was exactly that — and it looks like I paid a lot more."</p>
+                    <p class="text-slate-700 italic mb-6 leading-relaxed">"As a one-person business I needed something affordable and fast. This was exactly that — and it looks like I paid a lo[...]
                     <div>
                         <h4 class="font-bold text-slate-900">Aisha K.</h4>
                         <p class="text-sm text-slate-500">Durban</p>
@@ -471,7 +521,7 @@ Your satisfaction is our priority. We don't just build websites, we build soluti
                         <i data-lucide="star" class="w-5 h-5 text-amber-400 fill-amber-400"></i>
                         <i data-lucide="star" class="w-5 h-5 text-amber-400 fill-amber-400"></i>
                     </div>
-                    <p class="text-slate-700 italic mb-6 leading-relaxed">"Loved that everything was handled for me, including the domain. I just sent my logo and content and the rest was done."</p>
+                    <p class="text-slate-700 italic mb-6 leading-relaxed">"Loved that everything was handled for me, including the domain. I just sent my logo and content and the rest was done."<[...]
                     <div>
                         <h4 class="font-bold text-slate-900">Sipho N.</h4>
                         <p class="text-sm text-slate-500">Port Elizabeth</p>
@@ -503,7 +553,7 @@ Your satisfaction is our priority. We don't just build websites, we build soluti
                         <i data-lucide="star" class="w-5 h-5 text-amber-400 fill-amber-400"></i>
                         <i data-lucide="star" class="w-5 h-5 text-amber-400 fill-amber-400"></i>
                     </div>
-                    <p class="text-slate-700 italic mb-6 leading-relaxed">"Dale was incredibly easy to work with. He explained everything in plain English, and the website he built has completely changed how people perceive my business."</p>
+                    <p class="text-slate-700 italic mb-6 leading-relaxed">"Dale was incredibly easy to work with. He explained everything in plain English, and the website he built has completely[...]
                     <div>
                         <h4 class="font-bold text-slate-900">Sarah J.</h4>
                         <p class="text-sm text-slate-500">Local Florist</p>
@@ -519,7 +569,7 @@ Your satisfaction is our priority. We don't just build websites, we build soluti
                         <i data-lucide="star" class="w-5 h-5 text-amber-400 fill-amber-400"></i>
                         <i data-lucide="star" class="w-5 h-5 text-amber-400 fill-amber-400"></i>
                     </div>
-                    <p class="text-slate-700 italic mb-6 leading-relaxed">"Finally, a web developer who actually responds to emails! The process was straightforward, transparent pricing, and the final result exceeded my expectations."</p>
+                    <p class="text-slate-700 italic mb-6 leading-relaxed">"Finally, a web developer who actually responds to emails! The process was straightforward, transparent pricing, and the [...]
                     <div>
                         <h4 class="font-bold text-slate-900">Michael T.</h4>
                         <p class="text-sm text-slate-500">Home Renovations</p>
@@ -542,7 +592,7 @@ Your satisfaction is our priority. We don't just build websites, we build soluti
                 <div class="faq-card bg-white rounded-2xl border border-slate-100 shadow-md shadow-slate-100/40 p-5 cursor-pointer transition" onclick="toggleFaq(this)">
                     <div class="flex justify-between items-center">
                         <h4 class="font-bold text-slate-800 text-sm sm:text-base">How much does a website cost?</h4>
-                        <span class="chevron-icon w-6 h-6 flex items-center justify-center rounded-full bg-slate-50 text-slate-400 transition-transform duration-300"><i class="fa-solid fa-chevron-down"></i></span>
+                        <span class="chevron-icon w-6 h-6 flex items-center justify-center rounded-full bg-slate-50 text-slate-400 transition-transform duration-300"><i class="fa-solid fa-chevron[...]"></span>
                     </div>
                     <div class="faq-answer text-xs sm:text-sm text-slate-500 leading-relaxed">
                         R1200 once-off plus your domain registration. No hidden fees.
@@ -552,7 +602,7 @@ Your satisfaction is our priority. We don't just build websites, we build soluti
                 <div class="faq-card bg-white rounded-2xl border border-slate-100 shadow-md shadow-slate-100/40 p-5 cursor-pointer transition" onclick="toggleFaq(this)">
                     <div class="flex justify-between items-center">
                         <h4 class="font-bold text-slate-800 text-sm sm:text-base">What's included?</h4>
-                        <span class="chevron-icon w-6 h-6 flex items-center justify-center rounded-full bg-slate-50 text-slate-400 transition-transform duration-300"><i class="fa-solid fa-chevron-down"></i></span>
+                        <span class="chevron-icon w-6 h-6 flex items-center justify-center rounded-full bg-slate-50 text-slate-400 transition-transform duration-300"><i class="fa-solid fa-chevron[...]"></span>
                     </div>
                     <div class="faq-answer text-xs sm:text-sm text-slate-500 leading-relaxed">
                         A professionally designed 1-page website with 5 sections, fully mobile-friendly, speed optimized, contact form, WhatsApp integration, and basic SEO setup.
@@ -562,7 +612,7 @@ Your satisfaction is our priority. We don't just build websites, we build soluti
                 <div class="faq-card bg-white rounded-2xl border border-slate-100 shadow-md shadow-slate-100/40 p-5 cursor-pointer transition" onclick="toggleFaq(this)">
                     <div class="flex justify-between items-center">
                         <h4 class="font-bold text-slate-800 text-sm sm:text-base">How long does it take?</h4>
-                        <span class="chevron-icon w-6 h-6 flex items-center justify-center rounded-full bg-slate-50 text-slate-400 transition-transform duration-300"><i class="fa-solid fa-chevron-down"></i></span>
+                        <span class="chevron-icon w-6 h-6 flex items-center justify-center rounded-full bg-slate-50 text-slate-400 transition-transform duration-300"><i class="fa-solid fa-chevron[...]"></span>
                     </div>
                     <div class="faq-answer text-xs sm:text-sm text-slate-500 leading-relaxed">
                         Most websites are completed within 2–5 business days after receiving your content.
@@ -572,7 +622,7 @@ Your satisfaction is our priority. We don't just build websites, we build soluti
                 <div class="faq-card bg-white rounded-2xl border border-slate-100 shadow-md shadow-slate-100/40 p-5 cursor-pointer transition" onclick="toggleFaq(this)">
                     <div class="flex justify-between items-center">
                         <h4 class="font-bold text-slate-800 text-sm sm:text-base">Can I update my website later?</h4>
-                        <span class="chevron-icon w-6 h-6 flex items-center justify-center rounded-full bg-slate-50 text-slate-400 transition-transform duration-300"><i class="fa-solid fa-chevron-down"></i></span>
+                        <span class="chevron-icon w-6 h-6 flex items-center justify-center rounded-full bg-slate-50 text-slate-400 transition-transform duration-300"><i class="fa-solid fa-chevron[...]"></span>
                     </div>
                     <div class="faq-answer text-xs sm:text-sm text-slate-500 leading-relaxed">
                         Yes. Additional changes, extra pages, and future upgrades can be done whenever your business grows.
@@ -582,7 +632,7 @@ Your satisfaction is our priority. We don't just build websites, we build soluti
                 <div class="faq-card bg-white rounded-2xl border border-slate-100 shadow-md shadow-slate-100/40 p-5 cursor-pointer transition" onclick="toggleFaq(this)">
                     <div class="flex justify-between items-center">
                         <h4 class="font-bold text-slate-800 text-sm sm:text-base">Will my website work on phones?</h4>
-                        <span class="chevron-icon w-6 h-6 flex items-center justify-center rounded-full bg-slate-50 text-slate-400 transition-transform duration-300"><i class="fa-solid fa-chevron-down"></i></span>
+                        <span class="chevron-icon w-6 h-6 flex items-center justify-center rounded-full bg-slate-50 text-slate-400 transition-transform duration-300"><i class="fa-solid fa-chevron[...]"></span>
                     </div>
                     <div class="faq-answer text-xs sm:text-sm text-slate-500 leading-relaxed">
                         Absolutely. Every website is designed to look perfect on mobile phones, tablets, and desktops.
@@ -592,7 +642,7 @@ Your satisfaction is our priority. We don't just build websites, we build soluti
                 <div class="faq-card bg-white rounded-2xl border border-slate-100 shadow-md shadow-slate-100/40 p-5 cursor-pointer transition" onclick="toggleFaq(this)">
                     <div class="flex justify-between items-center">
                         <h4 class="font-bold text-slate-800 text-sm sm:text-base">Do I need to buy hosting?</h4>
-                        <span class="chevron-icon w-6 h-6 flex items-center justify-center rounded-full bg-slate-50 text-slate-400 transition-transform duration-300"><i class="fa-solid fa-chevron-down"></i></span>
+                        <span class="chevron-icon w-6 h-6 flex items-center justify-center rounded-full bg-slate-50 text-slate-400 transition-transform duration-300"><i class="fa-solid fa-chevron[...]"></span>
                     </div>
                     <div class="faq-answer text-xs sm:text-sm text-slate-500 leading-relaxed">
                         I'll help you choose reliable hosting and register your domain if needed.
@@ -602,7 +652,7 @@ Your satisfaction is our priority. We don't just build websites, we build soluti
                 <div class="faq-card bg-white rounded-2xl border border-slate-100 shadow-md shadow-slate-100/40 p-5 cursor-pointer transition" onclick="toggleFaq(this)">
                     <div class="flex justify-between items-center">
                         <h4 class="font-bold text-slate-800 text-sm sm:text-base">How do I get started?</h4>
-                        <span class="chevron-icon w-6 h-6 flex items-center justify-center rounded-full bg-slate-50 text-slate-400 transition-transform duration-300"><i class="fa-solid fa-chevron-down"></i></span>
+                        <span class="chevron-icon w-6 h-6 flex items-center justify-center rounded-full bg-slate-50 text-slate-400 transition-transform duration-300"><i class="fa-solid fa-chevron[...]"></span>
                     </div>
                     <div class="faq-answer text-xs sm:text-sm text-slate-500 leading-relaxed">
                         Simply click Get Started or message us on WhatsApp with your business details, and we'll handle the rest.
@@ -625,11 +675,11 @@ Your satisfaction is our priority. We don't just build websites, we build soluti
             </p>
             
             <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <a href="https://wa.me/27774845787" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full sm:w-auto bg-slate-900 text-white font-bold px-8 py-4 rounded-xl hover:bg-slate-800 transition-colors shadow-lg hover:shadow-xl">
+                <a href="https://wa.me/27774845787" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full sm:w-auto bg-slate-900 text-white font-bold px-8 py-4 [...]
                     <i data-lucide="message-circle" class="w-5 h-5 mr-2"></i>
                     Chat on WhatsApp
                 </a>
-                <a href="mailto:hello@daleswebsolutions.co.za" class="flex items-center justify-center w-full sm:w-auto bg-white text-slate-900 font-bold px-8 py-4 rounded-xl hover:bg-slate-50 transition-colors shadow-lg hover:shadow-xl">
+                <a href="mailto:hello@daleswebsolutions.co.za" class="flex items-center justify-center w-full sm:w-auto bg-white text-slate-900 font-bold px-8 py-4 rounded-xl hover:bg-slate-50 tr[...]
                     <i data-lucide="mail" class="w-5 h-5 mr-2"></i>
                     Send an Email
                 </a>
@@ -669,7 +719,7 @@ Your satisfaction is our priority. We don't just build websites, we build soluti
                     <a href="mailto:hello@daleswebsolutions.co.za" class="flex items-center justify-center md:justify-start text-sm hover:text-teal-400 transition-colors">
                         <i data-lucide="mail" class="w-4 h-4 mr-2 text-teal-500"></i> hello@daleswebsolutions.co.za
                     </a>
-                    <a href="https://wa.me/27000000000" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center md:justify-start text-sm hover:text-teal-400 transition-colors">
+                    <a href="https://wa.me/27000000000" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center md:justify-start text-sm hover:text-teal-400 transition-c[...]
                         <i data-lucide="message-circle" class="w-4 h-4 mr-2 text-teal-500"></i> WhatsApp Me
                     </a>
                 </div>
@@ -682,6 +732,18 @@ Your satisfaction is our priority. We don't just build websites, we build soluti
             </div>
         </div>
     </footer>
+
+    <!-- WhatsApp floating button — mobile only -->
+    <a id="whatsapp-float"
+       class="whatsapp-float"
+       href="https://wa.me/27774845787?text=Hi%2C%20id%20like%20the%20locals%20favorite%21%20for%20R1200"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Chat on WhatsApp">
+      <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#FFFFFF" d="M20.52 3.48A11.88 11.88 0 0 0 12 0C5.37 0 .01 5.36 .01 12c0 2.12.56 4.17 1.62 5.98L0 24l6.34-1.66A11.93 11.93 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.22-3.48-8.52zM12 21.5c-1.9 0-3.73-.5-5.34-1.45l-.38-.22L4 20l1.16-2.25-.21-.39C4.55 15.07 4 13.56 4 12 4 7.03 7.03 3 12 3s8 4.03 8 9-3.03 9-8 9zM17.4 14.1c-.28-.14-1.64-.8-1.9-.88-.26-.09-.45-.14-.64.14s-.74.88-.9 1.06c-.16.19-.32.21-.6.07-.28-.14-1.18-.43-2.25-1.39-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.48.14-.16.19-.28.28-.47.09-.19.05-.36-.02-.5-.07-.14-.64-1.54-.88-2.12-.23-.55-.47-.48-.64-.49-.16 0-.36-.01-.55-.01s-.5.07-.76.36c-.26.29-1 1-1 2.43s1.03 2.82 1.17 3.02c.14.19 2.02 3.1 4.9 4.34 2.14 1 2.94 1.06 3.99 1.01 1.02-.05 1.65-.83 1.89-1.62.24-.79.24-1.47.17-1.62-.07-.14-.26-.23-.54-.37z"/>
+      </svg>
+    </a>
 
     <!-- Scripts -->
     <script>
